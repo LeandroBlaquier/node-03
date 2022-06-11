@@ -48,10 +48,6 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.status(200).send(runningMessage);
 });
 
-// Los enlaces expressWinston.logger en Express.js, registran automáticamente los detalles, a través de la misma infraestructura de debug para cada solicitud completa. Las opciones que le hemos pasado formatearán y colorearán cuidadosamente la salida del terminal correspondiente, con un registro más detallado (el valor predeterminado) cuando estemos en modo de depuración.
-// Tenga en cuenta que tenemos que definir nuestras rutas después de configurar expressWinston.logger.
-// Finalmente y lo más importante:
-
 server.listen(port, () => {
   routes.forEach((route: CommonRoutesConfig) => {
     debugLog(`Routes configured for ${route.getName()}`);
