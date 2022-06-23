@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express from "express";
 import * as http from "http";
 import * as winston from "winston";
@@ -22,6 +23,11 @@ app.use(cors());
 
 // here we are preparing the expressWinston logging middleware configuration,
 // which will automatically log all HTTP requests handled by Express.js
+const dotenvResult = dotenv.config();
+if (dotenvResult.error) {
+  throw dotenvResult.error;
+}
+
 const loggerOptions: expressWinston.LoggerOptions = {
   transports: [new winston.transports.Console()],
   format: winston.format.combine(
